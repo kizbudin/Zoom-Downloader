@@ -7,9 +7,10 @@
 #               This Python script uses the JSON Web Token (JWT)
 #               method of accessing the Zoom API
 # Created:      2020-04-26
+# Modified:     2021-12-15
 # Author:       Ricardo Rodrigues
-# Website:      https://github.com/ricardorodrigues-ca/zoom-recording-downloader
-# Forked from:  https://gist.github.com/danaspiegel/c33004e52ffacb60c24215abf8301680
+# Website:      https://github.com/kizbudin/Zoom-Downloader.git
+# Forked from:  https://github.com/ricardorodrigues-ca/zoom-recording-downloader
 
 # Import TQDM progress bar library
 from tqdm import tqdm
@@ -186,14 +187,14 @@ def load_completed_meeting_ids():
             for line in fd:
                 COMPLETED_MEETING_IDS.add(line.strip())
     except FileNotFoundError:
-        print("Log file not found. Creating new log file: ",
+        print("File untuk log tidak Terdeteksi. membuat file log: ",
               COMPLETED_MEETING_IDS_LOG)
         print()
 
 
 def handler(signal_received, frame):
     # handle cleanup here
-    print(color.RED + "\nSIGINT or CTRL-C detected. Exiting gracefully." + color.END)
+    print(color.RED + "\nCtrl + C Terdeteksi. Keluar dari program.." + color.END)
     exit(0)
 
 
@@ -242,11 +243,11 @@ def main():
 
     load_completed_meeting_ids()
 
-    print(color.BOLD + "Getting user accounts..." + color.END)
+    print(color.BOLD + "Memproses Akun..." + color.END)
     users = get_user_ids()
 
     for email, user_id, first_name, last_name in users:
-        print(color.BOLD + "\nGetting recording list for {} {} ({})".format(first_name,
+        print(color.BOLD + "\nMemproses daftar rekaman untuk akun {} {} ({})".format(first_name,
                                                                             last_name, email) + color.END)
         # wait n.n seconds so we don't breach the API rate limit
         # time.sleep(0.1)
@@ -258,7 +259,7 @@ def main():
             success = False
             meeting_id = recording['uuid']
             if meeting_id in COMPLETED_MEETING_IDS:
-                print("==> Skipping already downloaded meeting: {}".format(meeting_id))
+                print("==> Skip file yang sudah terdownload sebelumnya: {}".format(meeting_id))
                 continue
 
             downloads = get_downloads(recording)
@@ -268,7 +269,7 @@ def main():
                         recording, file_type, file_extension, recording_type, recording_id)
                     # truncate URL to 64 characters
                     truncated_url = download_url[0:64] + "..."
-                    print("==> Downloading ({} of {}) as {}: {}: {}".format(
+                    print("==> Mengunduh ({} of {}) as {}: {}: {}".format(
                         index+1, total_count, recording_type, recording_id, truncated_url))
                     success |= download_recording(download_url, email, filename, foldername)
                     #success = True
@@ -284,9 +285,9 @@ def main():
                     log.write('\n')
                     log.flush()
 
-    print(color.BOLD + color.GREEN + "\n*** All done! ***" + color.END)
+    print(color.BOLD + color.GREEN + "\n*** Proses Download Selesai! ***" + color.END)
     save_location = os.path.abspath(DOWNLOAD_DIRECTORY)
-    print(color.BLUE + "\nRecordings have been saved to: " +
+    print(color.BLUE + "\nFile Rekaman di simpan di: " +
           color.UNDERLINE + "{}".format(save_location) + color.END + "\n")
 
 

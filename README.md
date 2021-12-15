@@ -9,7 +9,7 @@
 
 ## Installasi ##
 
-_Attention: Install [Python 3.6](https://www.python.org/downloads/) atau lebih tinggi_
+_Perhatian: Install [Python 3.6](https://www.python.org/downloads/) atau lebih tinggi_
 
 ```sh
 $ git clone https://github.com/kizbudin/Zoom-Downloader.git
@@ -19,9 +19,9 @@ $ pip3 install -r requirements.txt
 
 ## Penggunaan ##
 
-_Attention: Untuk menggunakan tools ini, perlu akun [Zoom Developer account](https://marketplace.zoom.us/) untuk membuat [JWT app](https://marketplace.zoom.us/docs/guides/build/jwt-app) dengan menggunakan token anda_
+_Perhatian: Untuk menggunakan tools ini, perlu akun [Zoom Developer account](https://marketplace.zoom.us/) untuk membuat [JWT app](https://marketplace.zoom.us/docs/guides/build/jwt-app) dengan menggunakan token anda_
 
-Buat sebuah file bernama **appenv.py** dengan variabel bernama `JWT_TOKEN` isikan variabel tersebut dengan token JWT anda:
+Buat sebuah file bernama **appenv.py** jika belum ada dengan variabel bernama `JWT_TOKEN` isikan variabel tersebut dengan token JWT anda:
 
     JWT_TOKEN = 'letakkan_JWT Token'
 
