@@ -1,33 +1,33 @@
-# zoom-recording-downloader
+# Zoom Downloader
 
 [![Python 3.6](https://img.shields.io/badge/python-3.6%20%2B-blue.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/license-MIT-brown.svg)](https://raw.githubusercontent.com/ricardorodrigues-ca/zoom-recording-downloader/master/LICENSE)
 
-**Zoom Recording Downloader** is a cross-platform Python script that uses Zoom's API (v2) to download and organize all cloud recordings from a Zoom account onto local storage.
+**Zoom Downloader** adalah script Python yang menggunakan API Zoom (v2) untuk mengunduh dan mengatur semua rekaman cloud dari akun Zoom ke penyimpanan lokal.
 
 ## Screenshot ##
 ![screenshot](screenshot.png)
 
-## Installation ##
+## Installasi ##
 
-_Attention: You will need [Python 3.6](https://www.python.org/downloads/) or greater_
+_Attention: Install [Python 3.6](https://www.python.org/downloads/) atau lebih tinggi_
 
 ```sh
-$ git clone https://github.com/ricardorodrigues-ca/zoom-recording-downloader
-$ cd zoom-recording-downloader
+$ git clone https://github.com/kizbudin/Zoom-Downloader.git
+$ cd Zoom-Downloader
 $ pip3 install -r requirements.txt
 ```
 
-## Usage ##
+## Penggunaan ##
 
-_Attention: You will require a [Zoom Developer account](https://marketplace.zoom.us/) in order to create a [JWT app](https://marketplace.zoom.us/docs/guides/build/jwt-app) with your token_
+_Attention: Untuk menggunakan tools ini, perlu akun [Zoom Developer account](https://marketplace.zoom.us/) untuk membuat [JWT app](https://marketplace.zoom.us/docs/guides/build/jwt-app) dengan menggunakan token anda_
 
-Create a file called **appenv.py** with a variable called `JWT_TOKEN` that contains the JSON Web Token from your JWT app:
+Buat sebuah file bernama **appenv.py** dengan variabel bernama `JWT_TOKEN` isikan variabel tersebut dengan token JWT anda:
 
-    JWT_TOKEN = 'your_token_goes_here'
+    JWT_TOKEN = 'letakkan_JWT Token'
 
-Open the **zoom-recording-downloader.py** file using your editor of choice, and modify the following variables to reflect your environment:
+Buka file **zoom-recording-downloader.py** dengan menggunaka text editor seperti notepad, sublime dll. lalu ubah isi dari variabel berikut:
 
-- Set these variables to the earliest recording date you wish to download, within a six month period (default is January 1st, 2021)
+- Set variabel ini ke tanggal perekaman paling awal yang ingin di unduh, dalam periode 6 bulan (default is January 1st, 2021)
 
       RECORDING_START_YEAR = 2021
       
@@ -35,15 +35,15 @@ Open the **zoom-recording-downloader.py** file using your editor of choice, and 
       
       RECORDING_START_DAY = 1
 
-- Specify the folder name where the recordings will be downloaded (default = downloads)
+- Tentukan nama folder yagn akan digunakan untuk tempat download video (default = downloads)
 
       DOWNLOAD_DIRECTORY = 'downloads'
 
-- Specify the name of the log file that will store the ID's of downloaded recordings (default = completed-downloads.log)
+- Tentukan nama file log yang akan menyimpan ID rekaman yang diunduh
 
       COMPLETED_MEETING_IDS_LOG = 'completed-downloads.log'
 
-Run command:
+Perintah untuk menjalankan program:
 
 ```sh
 python3 zoom-recording-downloader.py

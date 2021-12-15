@@ -27,7 +27,7 @@ import requests
 import time
 import sys
 import os
-APP_VERSION = "2.1"
+APP_VERSION = "3.0"
 
 # JWT_TOKEN now lives in appenv.py
 ACCESS_TOKEN = 'Bearer ' + JWT_TOKEN
@@ -37,10 +37,12 @@ API_ENDPOINT_USER_LIST = 'https://api.zoom.us/v2/users'
 
 # Start date now split into YEAR, MONTH, and DAY variables (Within 6 month range)
 RECORDING_START_YEAR = 2021
-RECORDING_START_MONTH = 5
+RECORDING_START_MONTH = 12
 RECORDING_START_DAY = 1
+#di gunakan jika ingin mendownload hingga hari ini
 RECORDING_END_DATE = date.today()
-# RECORDING_END_DATE = date(2021, 8, 1)
+#Uncomment jika ingin menetapkan dari tanggal berapa hingga tanggal berapa
+#RECORDING_END_DATE = date(2021, 12, 30)
 DOWNLOAD_DIRECTORY = 'downloads'
 COMPLETED_MEETING_IDS_LOG = 'completed-downloads.log'
 COMPLETED_MEETING_IDS = set()
@@ -207,24 +209,35 @@ def main():
     # show the logo
     print('''
 
-                               ,*****************.
-                            *************************
-                          *****************************
-                        *********************************
-                       ******               ******* ******
-                      *******                .**    ******
-                      *******                       ******/
-                      *******                       /******
-                      ///////                 //    //////
-                       ///////*              ./////.//////
-                        ////////////////////////////////*
-                          /////////////////////////////
-                            /////////////////////////
-                               ,/////////////////
+                                                                               ,#             
+                                                                         #,   ###     ###     
+                                                                        %%#  ####  .####      
+                                                                        %%##%#########     .* 
+                                                                      ((       /##### *#####  
+                                                                    ((( #####/    #######.    
+                                                                  .((     #####    ###        
+                                                                  (((       ###*   ####(,     
+                                                                   (((        *(   #######.   
+                                                                    (((((((((((((             
+                                                                       ,((((((                
+                                                                                                    
+                             |__   __| | | |                                 
+                                | | ___| | | _____  _ __ ___                 
+                                | |/ _ \ | |/ / _ \| '_ ` _ \                
+                                | |  __/ |   < (_) | | | | | |               
+                               _|_|\___|_|_|\_\___/|_| |_|_|_|_ _____ ______ 
+                              / ____|  __ \   /\         / ____/ ____|  ____|
+                             | (___ | |  | | /  \ ______| |   | |    | |__   
+                              \___ \| |  | |/ /\ \______| |   | |    |  __|  
+                              ____) | |__| / ____ \     | |___| |____| |____ 
+                             |_____/|_____/_/    \_\     \_____\_____|______|
+                                                                                  
+                                                                                  
+                                                                                  
 
-                           Zoom Recording Downloader
+                                  Versi {}
+                        Zoom Record Video Downloader Tool
 
-                                  Version {}
 '''.format(APP_VERSION))
 
     load_completed_meeting_ids()
